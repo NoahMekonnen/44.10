@@ -33,7 +33,14 @@ function App() {
   }
   return (
     <div className="App">
-      <button onClick={() => shuffle(id.current)}>Shuffle Deck</button>
+      <button onClick={async (e) => {
+        console.log(e.target,"target")
+        e.target.style.display = 'none'
+        shuffle(id.current)
+        setTimeout(() => {
+        e.target.style.display = 'inline'
+        },'500')
+      }}>Shuffle Deck</button>
       <button onClick={handleClick}>Gimme A Card</button>
       {cards.map(({ imgSrc }) => <img key={uuid()} src={imgSrc} />)}
     </div>
